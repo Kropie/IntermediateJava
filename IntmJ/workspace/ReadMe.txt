@@ -1,1 +1,1 @@
-IDE project directores go here.
+Lab directories go in this directory.

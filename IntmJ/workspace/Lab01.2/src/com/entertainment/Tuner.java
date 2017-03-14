@@ -16,5 +16,27 @@ public class Tuner {
   }
   public void setChannel(int channel) {
     this.channel = channel;
-  } 
+  }
+@Override
+public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + channel;
+	return result;
+}
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Tuner other = (Tuner) obj;
+	if (channel != other.channel)
+		return false;
+	return true;
+}
+  
+  
 }
