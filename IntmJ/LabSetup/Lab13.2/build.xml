@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Lab13.2" default="compile">
+  
+  <description>
+    Buildfile for JavaTunes Entertainment System
+  </description>
+  
+  <!-- PROPERTIES -->
+  <!-- environment-specific properties -->
+  <property file="build.properties"/>
+  
+  <!-- dependencies -->
+  <property name="junit.jar"        location="${junit.home}/junit-4.10.jar"/>
+  
+  <!-- source directories -->
+  <property name="src.dir"          location="src"/>
+  <property name="test.dir"         location="test"/>
+  
+  <!-- temp / working / scratch directories -->
+  <property name="build.dir"        location="build"/>
+  <property name="classes.dir"      location="${build.dir}/classes"/>
+  <property name="test-classes.dir" location="${build.dir}/test-classes"/>
+  <property name="test-results.dir" location="${build.dir}/test-results"/>
+  
+  <!-- deliverables directories -->
+  <property name="report.dir"       location="test-report"/>
+  <property name="doc.dir"          location="doc"/>
+  <property name="dist.dir"         location="dist"/>
+  
+  
+  <!-- TARGETS -->
+  <target name="clean" description="Clean project output directories">
+    <delete dir="${build.dir}"  includeemptydirs="true"/>
+    <delete dir="${report.dir}" includeemptydirs="true"/>
+    <delete dir="${doc.dir}"    includeemptydirs="true"/>
+    <delete dir="${dist.dir}"   includeemptydirs="true"/>
+  </target>
+  
+  <target name="init" description="Prepare project for build">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+    <mkdir dir="${test-classes.dir}"/>
+    <mkdir dir="${test-results.dir}"/>
+    <mkdir dir="${report.dir}"/>
+    <mkdir dir="${doc.dir}"/>
+    <mkdir dir="${dist.dir}"/>
+  </target>
+  
+  <target name="compile" depends="init" description="Compile application classes">
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
+  </target>
+  
+  <target name="test-compile" depends="compile" description="Compile test classes">
+    <javac srcdir="${test.dir}" destdir="${test-classes.dir}" includeantruntime="false">
+      <classpath>
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${junit.jar}"/>
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="test" depends="test-compile" description="Run all unit tests">
+    <junit haltonfailure="false">
+      <classpath>
+        <pathelement location="${test-classes.dir}"/>
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${junit.jar}"/>
+      </classpath>
+      <!-- test run -->
+      <batchtest todir="${test-results.dir}">  <!-- test result files location -->
+        <!-- specify which test classes to run -->
+        <fileset dir="${test-classes.dir}" includes="**/*Test.class"/>
+      </batchtest>
+      <!-- test result output collector -->
+      <formatter type="xml"/>
+    </junit>
+    
+    <junitreport todir="${test-results.dir}">  <!-- test result files location -->
+      <fileset dir="${test-results.dir}" includes="TEST-*.xml"/>
+      <report todir="${report.dir}/html"/>
+    </junitreport>
+  </target>
+  
+  <target name="package" depends="compile" description="Create distributable JAR file">
+    <jar basedir="${classes.dir}" destfile="${dist.dir}/entertainment.jar"/>
+  </target>
+  
+  <target name="doc" depends="compile" description="Generate Javadoc">
+    <javadoc destdir="${doc.dir}" doctitle="Entertainment API" noqualifier="all"
+     author="true" version="true" splitindex="true">
+      <fileset dir="${src.dir}" excludes="com/entertainment/client/*.java"/>
+      <link href="http://docs.oracle.com/javase/8/docs/api"/>
+    </javadoc>
+  </target>
+  
+  <!-- convenience target to "do everything" -->
+  <target name="all" depends="clean, test, package, doc" description="Runs all targets"/>  
+</project>

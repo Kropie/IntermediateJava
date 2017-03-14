@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                     http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- GAV coordinates for this project and the type of its output artifact -->
+  <groupId>com.javatunes</groupId>
+  <artifactId>entertainment</artifactId>
+  <version>2.0</version>
+  <packaging>jar</packaging>
+  
+  <!--
+  Metadata for the project. All of it is optional.
+  These elements (and more) are read when using "mvn site" 
+  to generate a project development website.
+  -->
+  <name>JavaTunes Entertainment API</name>
+  <description>This is the Entertainment API 2.0 Specification Project</description>
+  <url>http://javatunes.com/entertainment</url>  
+  <organization>
+    <name>JavaTunes</name>
+    <url>http://javatunes.com</url>
+  </organization>
+  <developers>
+    <developer>
+      <name>David St. Hubbins</name>
+      <url>http://en.wikipedia.org/wiki/David_St._Hubbins</url>
+    </developer>
+    <developer>
+      <name>Nigel Tufnel</name>
+      <url>http://en.wikipedia.org/wiki/Nigel_Tufnel</url>
+    </developer>
+    <developer>
+      <name>Derek Smalls</name>
+      <url>http://en.wikipedia.org/wiki/Derek_Smalls</url>
+    </developer>
+    <developer>
+      <name>Viv Savage</name>
+      <url>http://en.wikipedia.org/wiki/Rare_Bird</url>
+    </developer>
+    <developer>
+      <name>Eric "Stumpy Joe" Childs</name>
+    </developer>
+  </developers>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <!-- List of project dependencies, each specified by its GAV coordinates -->
+  <!-- Details on the <scope> element:
+  compile (default)  on the compile and runtime classpath (e.g., included in WEB-INF/lib for a WAR)
+  test               not on the runtime classpath - only needed during test phases
+  runtime            not needed for compile or test-compile, only needed at runtime
+                     classic example is a JDBC driver
+  provided           needed for compile or test-compile, but not bundled into final packaging
+                     e.g., JBoss Application Server will supply all the JavaEE JARs
+  -->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <!--
+  Plugin configuration. Use cases:
+  1. Configure plugins that are already included in the phases of the 3 Maven lifecycles (build, clean, site).
+  2. Configure plugins that are to be used "standalone," e.g., mvn exec:java, to execute a standalone Java client.
+  3. Bind additional plugins to the phases of the 3 Maven lifecycles.
+  -->
+  <build>
+    <plugins>
+      <!-- Use case (1): override bogus default of Java 1.5 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <!-- Use case (1): exclude client package from deployable project artifact (JAR) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <excludes>
+            <exclude>com/entertainment/client/*</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <!-- Use case (2): execute a standalone Java client via exec:java -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <configuration>
+          <mainClass>com.entertainment.client.TelevisionClient</mainClass>
+        </configuration>
+      </plugin>
+      <!-- Use case (3): invoke javadoc:javadoc during package phase -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.4</version>
+        <!-- configure the javadoc:javadoc plugin goal - same settings we used in earlier labs -->
+        <configuration>
+          <reportOutputDirectory>${project.build.directory}/doc</reportOutputDirectory>
+          <doctitle>Entertainment API</doctitle>
+          <noqualifier>all</noqualifier>
+          <author>true</author>
+          <version>true</version>
+          <splitindex>true</splitindex>
+          <excludePackageNames>com.entertainment.client</excludePackageNames>
+          <links>
+            <link>http://docs.oracle.com/javase/8/docs/api</link>
+          </links>
+        </configuration>
+        <!-- fire javadoc:javadoc during package phase -->
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>javadoc</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

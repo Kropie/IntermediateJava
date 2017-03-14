@@ -1,0 +1,89 @@
+IndexOptions +SuppressIcon
+ErrorDocument 404 /errors/404.html
+
+Redirect Permanent /release-notes.html https://maven.apache.org/docs/history.html
+Redirect Permanent /download.html /download.cgi
+RedirectMatch permanent ^/(.*)/download.html$ https://maven.apache.org/$1/download.cgi
+
+Redirect /ref/current/ https://maven.apache.org/ref/3.3.9/
+Redirect /ref/current https://maven.apache.org/ref/3.3.9/
+
+Redirect Permanent /maven-v4_0_0.xsd https://maven.apache.org/xsd/maven-4.0.0.xsd
+
+Redirect Permanent /ant-tasks.html https://maven.apache.org/ant-tasks/index.html
+Redirect Permanent /ant-tasks-release-notes.html https://maven.apache.org/ant-tasks/release-notes.html
+
+Redirect Permanent /guides/mini/guide-ibiblio-upload.html https://maven.apache.org/guides/mini/guide-central-repository-upload.html
+Redirect Permanent /guides/development/guide-m2-development.html https://maven.apache.org/guides/development/guide-maven-development.html
+Redirect Permanent /guides/development/guide-building-m2.html https://maven.apache.org/guides/development/guide-building-maven.html
+Redirect Permanent /faq.html https://maven.apache.org/general.html
+Redirect Permanent /developers/release/pmc-release-process.html https://maven.apache.org/developers/release/releasing.html
+Redirect Permanent /development-process.html https://maven.apache.org/archives/maven-1.x/development-process.html
+Redirect Permanent /welcome-to-new-committers.html https://maven.apache.org/developers/welcome-to-new-committers.html
+
+Redirect Permanent /plugins/maven-checkstyle-plugin/customize.html https://maven.apache.org/plugins/maven-checkstyle-plugin/examples/custom-checker-config.html
+Redirect Permanent /plugins/maven-checkstyle-plugin/howto.html https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html
+Redirect Permanent /plugins/maven-checkstyle-plugin/tips.html https://maven.apache.org/plugins/maven-checkstyle-plugin/examples/multi-module-config.html
+
+RedirectMatch ^/maven2/(.*)$ /$1
+RedirectMatch ^/reference/(.*)$ /archives/maven-1.x/reference/$1
+RedirectMatch ^/maven-1.x/reference/plugins/(.*)$ /archives/maven-1.x/plugins/$1
+RedirectMatch ^/maven-aether-provider/(.*)$ /ref/3.3.9/maven-aether-provider/$1
+RedirectMatch ^/maven-artifact/(.*)$ /ref/3.3.9/maven-artifact/$1
+RedirectMatch ^/maven-compat/(.*)$ /ref/3.3.9/maven-compat/$1
+RedirectMatch ^/maven-core/(.*)$ /ref/3.3.9/maven-core/$1
+RedirectMatch ^/maven-embedder/(.*)$ /ref/3.3.9/maven-embedder/$1
+RedirectMatch ^/maven-model/(.*)$ /ref/3.3.9/maven-model/$1
+RedirectMatch ^/maven-model-builder/(.*)$ /ref/3.3.9/maven-model-builder/$1
+RedirectMatch ^/maven-plugin-api/(.*)$ /ref/3.3.9/maven-plugin-api/$1
+RedirectMatch ^/maven-repository-metadata/(.*)$ /ref/3.3.9/maven-repository-metadata/$1
+RedirectMatch ^/maven-settings/(.*)$ /ref/3.3.9/maven-settings/$1
+RedirectMatch ^/maven-settings-builder/(.*)$ /ref/3.3.9/maven-settings-builder/$1
+RedirectMatch ^/maven-1.x/plugins-sandbox/(.*)$ /archives/maven-1.x/plugins/$1
+
+RedirectMatch permanent ^/repository-manager/(.*)$ https://archiva.apache.org/$1
+RedirectMatch permanent ^/archiva(.*)$ https://archiva.apache.org$1
+RedirectMatch permanent ^/continuum(.*)$ https://continuum.apache.org$1
+RedirectMatch permanent ^/archetype/maven-archetype-bundles/(.*)$ /archetypes/$1
+RedirectMatch permanent ^/maven-archetype/(.*)$ /archetype/$1
+RedirectMatch permanent ^/plugins/maven-archetype-plugin/(.*)$ https://maven.apache.org/archetype/maven-archetype-plugin/$1
+RedirectMatch permanent ^/plugins/maven-enforcer-plugin/(.*)$ https://maven.apache.org/enforcer/maven-enforcer-plugin/$1
+RedirectMatch permanent ^/plugins/maven-failsafe-plugin/(.*)$ https://maven.apache.org/surefire/maven-failsafe-plugin/$1
+RedirectMatch Permanent ^/plugins/maven-jxr-plugin/(.*)$ https://maven.apache.org/jxr/maven-jxr-plugin/$1
+RedirectMatch permanent ^/plugins/maven-plugin-plugin/(.*)$ https://maven.apache.org/plugin-tools/maven-plugin-plugin/$1
+RedirectMatch permanent ^/plugins/maven-release-plugin/(.*)$ https://maven.apache.org/maven-release/maven-release-plugin/$1
+RedirectMatch permanent ^/plugins/maven-scm-plugin/(.*)$ https://maven.apache.org/scm/maven-scm-plugin/$1
+RedirectMatch permanent ^/plugins/maven-surefire-plugin/(.*)$ https://maven.apache.org/surefire/maven-surefire-plugin/$1
+RedirectMatch permanent ^/plugins/maven-surefire-report-plugin/(.*)$ https://maven.apache.org/surefire/maven-surefire-report-plugin/$1
+RedirectMatch permanent ^/shared/maven-doxia-tools/(.*)$ /doxia/doxia-tools/doxia-integration-tools/$1
+RedirectMatch permanent ^/shared/maven-plugin-testing-harness/(.*)$ https://maven.apache.org/plugin-testing/maven-plugin-testing-harness/$1
+RedirectMatch permanent ^/shared/maven-plugin-testing-tools/(.*)$ https://maven.apache.org/plugin-testing/maven-plugin-testing-tools/$1
+RedirectMatch permanent ^/shared/maven-plugin-tools/(.*)$ https://maven.apache.org/plugin-tools/$1
+RedirectMatch permanent ^/[^/]+-archives/([^/\dLATES]+/.*)$ https://maven.apache.org/$1
+RedirectMatch permanent ^/ref/3.1-SNAPSHOT/(.*)$ https://maven.apache.org/ref/3-LATEST/$1
+
+RedirectMatch permanent ^/plugins/maven-clover-plugin/([^2i].+)$ https://maven.apache.org/plugins/maven-clover-plugin/2.4/$1
+RedirectMatch permanent ^/plugins/maven-clover-plugin/ins(.+)$ https://maven.apache.org/plugins/maven-clover-plugin/2.4/ins$1
+RedirectMatch permanent ^/plugins/maven-clover-plugin/int(.+)$ https://maven.apache.org/plugins/maven-clover-plugin/2.4/int$1
+
+RedirectMatch ^/plugins/maven-site-plugin-2.x/(.*)$ /plugins-archives/maven-site-plugin-2.4/$1
+RedirectMatch ^/plugins/maven-site-plugin-3.x/(.*)$ /plugins/maven-site-plugin/$1
+
+Redirect Permanent /guides/development/guide-plugin-snapshot-repositories.html https://maven.apache.org/guides/development/guide-testing-development-plugins.html
+
+Redirect Permanent /guides/mini/guide-apt-format.html https://maven.apache.org/doxia/references/apt-format.html
+
+RedirectMatch ^/maven-1.x/(.*)$ https://maven.apache.org/archives/maven-1.x/$1
+
+RewriteEngine on
+
+# if file is not found in maven-site, look into components
+RewriteCond %{REQUEST_URI} !^/components/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /components/$1 [C]
+
+# in case of directory without trailing /, do the redirect or httpd will do a redirect from /foo to /components/foo/
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule components/(.*) /$1/ [R]
