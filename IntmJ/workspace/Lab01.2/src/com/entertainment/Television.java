@@ -62,26 +62,6 @@ public int hashCode() {
 
 @Override
 public boolean equals(Object obj) {
-//	if (this == obj)
-//		return true;
-//	if (obj == null)
-//		return false;
-//	if (getClass() != obj.getClass())
-//		return false;
-//	Television other = (Television) obj;
-//	if (brand == null) {
-//		if (other.brand != null)
-//			return false;
-//	} else if (!brand.equals(other.brand))
-//		return false;
-//	if (tuner == null) {
-//		if (other.tuner != null)
-//			return false;
-//	} else if (!tuner.equals(other.tuner))
-//		return false;
-//	if (volume != other.volume)
-//		return false;
-//	return true;
 	boolean result = false;
 	if(obj instanceof Television) {
 		Television other = (Television) obj;
