@@ -11,26 +11,29 @@ package com.entertainment;
 import java.util.Objects;
 
 /**
- * This class does not implement the java bean class because the setter for the channel
- * does not adhere to the bean naming convention (set"fieldName")
+ * This class does not implement the java bean class because the setter for the
+ * channel does not adhere to the bean naming convention (set"fieldName")
  * 
  * @author Jonathan Kropfinger
  *
  */
 public class Television implements Comparable<Television> {
 	public enum DisplayType {
-		LCD,LED,OLED,PLASMA,CRT;
+		LCD, LED, OLED, PLASMA, CRT;
 	}
+
 	private String brand;
 	private int volume;
 	private DisplayType displayType;
+	public static final int MIN_VOLUME = 0;
+	public static final int MAX_VOLUME = 100;
 
 	private Tuner tuner = new Tuner(); // set up internally and used for channel
 										// management
 
 	public Television() {
 	}
-	
+
 	public Television(String brand, int volume) {
 		setBrand(brand);
 		setVolume(volume);
@@ -82,11 +85,11 @@ public class Television implements Comparable<Television> {
 	public int getCurrentChannel() {
 		return tuner.getChannel(); // delegate to contained Tuner object
 	}
-	
+
 	public DisplayType getDisplayType() {
 		return displayType;
 	}
-	
+
 	public int getVolume() {
 		return this.volume;
 	}
@@ -105,16 +108,25 @@ public class Television implements Comparable<Television> {
 		this.brand = brand;
 	}
 
+	/**
+	 * We will not validate the display type, as all are allowed. If you were to
+	 * validate the display type you could use a subset via the EnumSet.of()
+	 * method provided by java.util
+	 * 
+	 * @param type
+	 */
 	public void setDisplayType(DisplayType type) {
 		displayType = type;
 	}
 
 	public void setVolume(int volume) {
-		this.volume = volume;
+		if (volume <= MAX_VOLUME && volume >= MIN_VOLUME) {
+			this.volume = volume;
+		}
 	}
-	
+
 	public String toString() {
 		return getClass().getSimpleName() + " [brand=" + getBrand() + ", volume=" + getVolume() + ", currentChannel="
-				+ getCurrentChannel() + ", displayType=" + getDisplayType()  + "]";
+				+ getCurrentChannel() + ", displayType=" + getDisplayType() + "]";
 	}
 }
