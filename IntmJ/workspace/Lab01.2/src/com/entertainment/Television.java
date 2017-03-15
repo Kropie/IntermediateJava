@@ -18,20 +18,24 @@ import java.util.Objects;
  *
  */
 public class Television implements Comparable<Television> {
+	public enum DisplayType {
+		LCD,LED,OLED,PLASMA,CRT;
+	}
 	private String brand;
 	private int volume;
 	private DisplayType displayType;
+
 	private Tuner tuner = new Tuner(); // set up internally and used for channel
 										// management
 
 	public Television() {
 	}
-
+	
 	public Television(String brand, int volume) {
 		setBrand(brand);
 		setVolume(volume);
 	}
-	
+
 	public Television(String brand, int volume, DisplayType displayType) {
 		super();
 		this.brand = brand;
@@ -39,63 +43,8 @@ public class Television implements Comparable<Television> {
 		this.displayType = displayType;
 	}
 
-	public String getBrand() {
-		return this.brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-	public int getVolume() {
-		return this.volume;
-	}
-
-	public void setVolume(int volume) {
-		this.volume = volume;
-	}
-
-	public int getCurrentChannel() {
-		return tuner.getChannel(); // delegate to contained Tuner object
-	}
-
 	public void changeChannel(int channel) {
 		tuner.setChannel(channel); // delegate to contained Tuner object
-	}
-	
-	public DisplayType getDisplayType() {
-		return displayType;
-	}
-	
-	public void setDisplayType(DisplayType type) {
-		displayType = type;
-	}
-
-	public String toString() {
-		return getClass().getSimpleName() + " [brand=" + getBrand() + ", volume=" + getVolume() + ", currentChannel="
-				+ getCurrentChannel() + ", displayType=" + getDisplayType()  + "]";
-	}
-
-	/**
-	 * Objects.hash was introduced in Java 7.
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		return Objects.hash(getBrand(), getVolume(), getCurrentChannel());
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		boolean result = false;
-		if (obj instanceof Television) {
-			Television other = (Television) obj;
-			result = Objects.equals(this.getBrand(), other.getBrand())
-					&& Objects.equals(this.getCurrentChannel(), other.getCurrentChannel())
-					&& Objects.equals(this.getVolume(), other.getVolume());
-		}
-		return result;
 	}
 
 	/**
@@ -112,8 +61,60 @@ public class Television implements Comparable<Television> {
 		retval = (retval == 0) ? Integer.compare(this.getVolume(), arg0.getVolume()) : retval;
 		return retval;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean result = false;
+		if (obj instanceof Television) {
+			Television other = (Television) obj;
+			result = Objects.equals(this.getBrand(), other.getBrand())
+					&& Objects.equals(this.getCurrentChannel(), other.getCurrentChannel())
+					&& Objects.equals(this.getVolume(), other.getVolume())
+					&& Objects.equals(this.getDisplayType(), other.getDisplayType());
+		}
+		return result;
+	}
+
+	public String getBrand() {
+		return this.brand;
+	}
+
+	public int getCurrentChannel() {
+		return tuner.getChannel(); // delegate to contained Tuner object
+	}
 	
-	public enum DisplayType {
-		LCD,LED,OLED,PLASMA,CRT;
+	public DisplayType getDisplayType() {
+		return displayType;
+	}
+	
+	public int getVolume() {
+		return this.volume;
+	}
+
+	/**
+	 * Objects.hash was introduced in Java 7.
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(getBrand(), getVolume(), getCurrentChannel(), getDisplayType());
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public void setDisplayType(DisplayType type) {
+		displayType = type;
+	}
+
+	public void setVolume(int volume) {
+		this.volume = volume;
+	}
+	
+	public String toString() {
+		return getClass().getSimpleName() + " [brand=" + getBrand() + ", volume=" + getVolume() + ", currentChannel="
+				+ getCurrentChannel() + ", displayType=" + getDisplayType()  + "]";
 	}
 }
