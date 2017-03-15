@@ -51,12 +51,6 @@ public class Television implements Comparable<Television>{
 
 @Override
 public int hashCode() {
-//	final int prime = 31;
-//	int result = 1;
-//	result = prime * result + ((brand == null) ? 0 : brand.hashCode());
-//	result = prime * result + ((tuner == null) ? 0 : tuner.hashCode());
-//	result = prime * result + volume;
-//	return result;
 	return Objects.hash(getBrand(), getVolume(), getCurrentChannel());
 }
 
