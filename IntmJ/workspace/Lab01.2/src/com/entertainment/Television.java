@@ -14,7 +14,7 @@ import java.util.Objects;
  * This class does not implement the java bean class because the setter for the channel
  * does not adhere to the bean naming convention (set"fieldName")
  * 
- * @author jonat
+ * @author Jonathan Kropfinger
  *
  */
 public class Television implements Comparable<Television> {
