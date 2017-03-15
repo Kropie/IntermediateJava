@@ -49,6 +49,11 @@ public class Television implements Comparable<Television>{
     return getClass().getSimpleName() + " [brand=" + getBrand() + ", volume=" + getVolume() + ", currentChannel=" + getCurrentChannel() + "]";
   }
 
+/**
+ * Objects.hash was introduced in Java 7.
+ * 
+ * @see java.lang.Object#hashCode()
+ */
 @Override
 public int hashCode() {
 	return Objects.hash(getBrand(), getVolume(), getCurrentChannel());
@@ -66,6 +71,13 @@ public boolean equals(Object obj) {
 	return result;
 }
 
+	/**
+	 * This will first sort by the brand. If the brands are equivalent then this will sort by
+	 * the channel.
+	 * 
+	 * 
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	@Override
 	public int compareTo(Television arg0) {
 		int retval = 0;
