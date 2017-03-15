@@ -20,6 +20,7 @@ import java.util.Objects;
 public class Television implements Comparable<Television> {
 	private String brand;
 	private int volume;
+	private DisplayType displayType;
 	private Tuner tuner = new Tuner(); // set up internally and used for channel
 										// management
 
@@ -29,6 +30,13 @@ public class Television implements Comparable<Television> {
 	public Television(String brand, int volume) {
 		setBrand(brand);
 		setVolume(volume);
+	}
+	
+	public Television(String brand, int volume, DisplayType displayType) {
+		super();
+		this.brand = brand;
+		this.volume = volume;
+		this.displayType = displayType;
 	}
 
 	public String getBrand() {
@@ -54,10 +62,18 @@ public class Television implements Comparable<Television> {
 	public void changeChannel(int channel) {
 		tuner.setChannel(channel); // delegate to contained Tuner object
 	}
+	
+	public DisplayType getDisplayType() {
+		return displayType;
+	}
+	
+	public void setDisplayType(DisplayType type) {
+		displayType = type;
+	}
 
 	public String toString() {
 		return getClass().getSimpleName() + " [brand=" + getBrand() + ", volume=" + getVolume() + ", currentChannel="
-				+ getCurrentChannel() + "]";
+				+ getCurrentChannel() + ", displayType=" + getDisplayType()  + "]";
 	}
 
 	/**
@@ -95,5 +111,9 @@ public class Television implements Comparable<Television> {
 		retval = this.getBrand().compareTo(arg0.getBrand());
 		retval = (retval == 0) ? Integer.compare(this.getVolume(), arg0.getVolume()) : retval;
 		return retval;
+	}
+	
+	public enum DisplayType {
+		LCD,LED,OLED,PLASMA,CRT;
 	}
 }

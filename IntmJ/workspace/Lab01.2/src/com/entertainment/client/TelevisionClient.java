@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.entertainment.Television;
+import com.entertainment.Television.DisplayType;
 
 public class TelevisionClient {
 
@@ -38,5 +39,16 @@ public class TelevisionClient {
     tvs.add(tvB);
     System.out.println(tvs.size());
     System.out.println(tvs);
+    
+    /*
+     * The following was added for lab 1.4 where we learned about packages
+     * and enums.
+     */
+    Television tvC = new Television();
+    System.out.println(tvC);
+    tvC = new Television("JON", 11, DisplayType.CRT);
+    System.out.println(tvC);
+    tvC.setDisplayType(DisplayType.OLED);
+    System.out.println(tvC);
   }
 }
