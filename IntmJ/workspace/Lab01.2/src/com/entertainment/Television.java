@@ -46,8 +46,16 @@ public class Television implements Comparable<Television> {
 		this.displayType = displayType;
 	}
 
-	public void changeChannel(int channel) throws InvalidChannelException , ChannelDisallowedException{
+	public void changeChannel(int channel) throws InvalidChannelException, ChannelDisallowedException {
 		tuner.setChannel(channel); // delegate to contained Tuner object
+	}
+	
+	public boolean isParentalControl() {
+		return tuner.isParentalControl();
+	}
+	
+	public void setParentalControl(boolean pc) {
+		tuner.setParentalControl(pc);
 	}
 
 	/**
@@ -124,7 +132,7 @@ public class Television implements Comparable<Television> {
 		if (volume <= MAX_VOLUME && volume >= MIN_VOLUME) {
 			this.volume = volume;
 			return;
-		} else if(volume > MAX_VOLUME) { // is above max
+		} else if (volume > MAX_VOLUME) { // is above max
 			sb.append("Invalid volume:").append(volume).append(" is above the max value of ").append(MAX_VOLUME);
 		} else {
 			sb.append("Invalid volume:").append(volume).append(" is below the min value of ").append(MIN_VOLUME);

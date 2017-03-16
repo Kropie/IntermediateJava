@@ -32,7 +32,7 @@ public class TelevisionValidationTest {
 		System.out.println(tv1);
 
 		try {
-			tv1.changeChannel(0);
+			tv1.changeChannel(501);
 		} catch (ChannelDisallowedException | InvalidChannelException e) {
 			// TODO Auto-generated catch block
 			System.out.println("STACK TRACE\n");
