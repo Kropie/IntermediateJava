@@ -10,6 +10,9 @@ package com.entertainment.client;
 
 import java.util.Arrays;
 import java.util.List;
+
+import com.entertainment.ChannelDisallowedException;
+import com.entertainment.InvalidChannelException;
 import com.entertainment.Television;
 import com.entertainment.TelevisionChannelComparator;
 
@@ -17,7 +20,13 @@ public class TelevisionTestSort {
 
 	public static void main(String[] args) {
 		// dataset for testing
-		List<Television> tvList = createTelevisionList();
+		List<Television> tvList = null;
+		try {
+			tvList = createTelevisionList();
+		} catch (ChannelDisallowedException | InvalidChannelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// sort by natural order and print
 		tvList.sort(null);
@@ -39,7 +48,7 @@ public class TelevisionTestSort {
 	}
 
 	// dataset for testing
-	private static List<Television> createTelevisionList() {
+	private static List<Television> createTelevisionList() throws InvalidChannelException, ChannelDisallowedException {
 		Television tv1 = new Television("Zenith", 30);
 		tv1.changeChannel(44);
 

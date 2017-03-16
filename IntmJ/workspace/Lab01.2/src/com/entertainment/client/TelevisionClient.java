@@ -11,6 +11,8 @@ package com.entertainment.client;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.entertainment.ChannelDisallowedException;
+import com.entertainment.InvalidChannelException;
 import com.entertainment.Television;
 import com.entertainment.Television.DisplayType;
 
@@ -23,7 +25,12 @@ public class TelevisionClient {
 
 		Television tv2 = new Television("RCA", 10);
 		System.out.println(tv2);
-		tv2.changeChannel(9);
+		try {
+			tv2.changeChannel(9);
+		} catch (ChannelDisallowedException | InvalidChannelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(tv2);
 		System.out.println();
 

@@ -46,7 +46,7 @@ public class Television implements Comparable<Television> {
 		this.displayType = displayType;
 	}
 
-	public void changeChannel(int channel) {
+	public void changeChannel(int channel) throws InvalidChannelException , ChannelDisallowedException{
 		tuner.setChannel(channel); // delegate to contained Tuner object
 	}
 
@@ -119,10 +119,17 @@ public class Television implements Comparable<Television> {
 		displayType = type;
 	}
 
-	public void setVolume(int volume) {
+	public void setVolume(int volume) throws IllegalArgumentException {
+		StringBuffer sb = new StringBuffer();
 		if (volume <= MAX_VOLUME && volume >= MIN_VOLUME) {
 			this.volume = volume;
+			return;
+		} else if(volume > MAX_VOLUME) { // is above max
+			sb.append("Invalid volume:").append(volume).append(" is above the max value of ").append(MAX_VOLUME);
+		} else {
+			sb.append("Invalid volume:").append(volume).append(" is below the min value of ").append(MIN_VOLUME);
 		}
+		throw new IllegalArgumentException(sb.toString());
 	}
 
 	public String toString() {
