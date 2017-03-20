@@ -8,53 +8,57 @@
  */
 package com.entertainment;
 
-public class Radio
-implements Volume {
-  // INSTANCE VARIABLES
-  private int volume;
-  // for muting behavior
-  private int oldVolume;
-  private boolean isMuted;
+public class Radio implements Volume {
+	// INSTANCE VARIABLES
+	private int volume;
+	// for muting behavior
+	private int oldVolume;
+	private boolean isMuted;
+	private static final int SILENT_VOLUME = 0;
 
-  // CONSTRUCTORS
-  public Radio() {
-  }
+	// CONSTRUCTORS
+	public Radio() {
+	}
 
-  public Radio(int volume) {
-    setVolume(volume);
-  }
-  
-  // BEHAVIORAL METHODS
-  @Override  // interface Volume
-  public void mute() {
-    if (!isMuted()) {           // not currently muted
-      oldVolume = getVolume();  // store current volume in oldVolume
-      setVolume(0);             // set volume to zero
-    }
-    else {                      // currently muted
-      setVolume(oldVolume);     // restore volume from oldVolume value
-    }
-    isMuted = !isMuted;         // toggle muted flag
-  }
+	public Radio(int volume) {
+		setVolume(volume);
+	}
 
-  // ACCESSOR METHODS
-  @Override  // interface Volume
-  public void setVolume(int volume) {
-    this.volume = volume;
-  }
+	// BEHAVIORAL METHODS
+	@Override // interface Volume
+	public void mute() {
+		if (!isMuted()) { // not currently muted
+			oldVolume = getVolume(); // store current volume in oldVolume
+			setVolume(0); // set volume to zero
+		} else { // currently muted
+			setVolume(oldVolume); // restore volume from oldVolume value
+		}
+		isMuted = !isMuted; // toggle muted flag
+	}
 
-  @Override  // interface Volume
-  public int getVolume() {
-    return volume;
-  }
+	// ACCESSOR METHODS
+	@Override // interface Volume
+	public void setVolume(int volume) {
+		this.volume = volume;
+	}
 
-  @Override  // interface Volume
-  public boolean isMuted() {
-    return isMuted;
-  }
-  
-  @Override
-  public String toString() {
-    return "Radio: volume=" + (!isMuted() ? String.valueOf(volume) : "<muted>");
-  }
+	@Override // interface Volume
+	public int getVolume() {
+		return volume;
+	}
+
+	@Override // interface Volume
+	public boolean isMuted() {
+		return isMuted;
+	}
+
+	@Override
+	public void silence() {
+		setVolume(SILENT_VOLUME);
+	}
+
+	@Override
+	public String toString() {
+		return "Radio: volume=" + (!isMuted() ? String.valueOf(volume) : "<muted>");
+	}
 }
