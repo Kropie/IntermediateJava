@@ -9,35 +9,65 @@
 package com.javatunes.personnel;
 
 import java.sql.Date;
+import java.util.Objects;
 
-public class SalariedEmployee
-extends Employee {
-  private Double salary;
-  
-  public SalariedEmployee() {
-  }
+import gov.irs.TaxPayer;
 
-  public SalariedEmployee(String name, Date hireDate) {
-    setName(name);
-    setHireDate(hireDate);
-  }
-  
-  public SalariedEmployee(String name, Date hireDate, Double salary) {
-    setName(name);
-    setHireDate(hireDate);
-    setSalary(salary);
-  }
-  
-  public Double getSalary() {
-    return this.salary;
-  }
-  public void setSalary(Double salary) {
-    this.salary = salary;
-  }
-  
-  @Override
-  public String toString() {
-    return getClass().getSimpleName() + ": name=" + getName() + ", hireDate=" + getHireDate() + 
-      ", salary=" + getSalary();
-  }
+public class SalariedEmployee extends Employee {
+	private Double salary;
+
+	public SalariedEmployee() {
+	}
+
+	public SalariedEmployee(String name, Date hireDate) {
+		super(name, hireDate);
+		setHireDate(hireDate);
+	}
+
+	public SalariedEmployee(String name, Date hireDate, Double salary) {
+		super(name, hireDate);
+		setSalary(salary);
+	}
+
+	public Double getSalary() {
+		return this.salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
+
+	@Override
+	public void pay() {
+		StringBuffer sb = new StringBuffer().append(getName()).append(" is paid salary ").append(getSalary());
+		System.out.println(sb);
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + ": name=" + getName() + ", hireDate=" + getHireDate() + ", salary="
+				+ getSalary();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null || obj.getClass() != this.getClass()) {
+			return false;
+		}
+
+		SalariedEmployee e = (SalariedEmployee) obj;
+
+		return super.equals(obj) && Objects.equals(getSalary(), e.getSalary());
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode() ^ Objects.hash(getSalary());
+	}
+
+	@Override
+	public double payTaxes() {
+		return getSalary() * TaxPayer.SALARIED_TAX_RATE;
+	}
+
 }
