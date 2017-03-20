@@ -17,7 +17,9 @@ public interface Volume {
 
 	public boolean isMuted();
 
-	public void silence();
+	public default void silence() {
+		setVolume(0);
+	}
 
 	public static void silenceAll(Volume... volumes) {
 		for (Volume volume : volumes) {

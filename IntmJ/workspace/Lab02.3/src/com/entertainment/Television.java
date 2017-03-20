@@ -20,9 +20,6 @@ public class Television implements Volume {
 	private int oldVolume;
 	private boolean isMuted;
 
-	// For silencing the TV
-	private static final int SILENT_VOLUME = 0;
-
 	// CONSTRUCTORS
 	public Television() {
 	}
@@ -78,11 +75,6 @@ public class Television implements Volume {
 
 	public String getBrand() {
 		return brand;
-	}
-
-	@Override
-	public void silence() {
-		setVolume(SILENT_VOLUME);
 	}
 
 	@Override

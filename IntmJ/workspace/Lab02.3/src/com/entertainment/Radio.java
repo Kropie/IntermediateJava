@@ -14,8 +14,6 @@ public class Radio implements Volume {
 	// for muting behavior
 	private int oldVolume;
 	private boolean isMuted;
-	private static final int SILENT_VOLUME = 0;
-
 	// CONSTRUCTORS
 	public Radio() {
 	}
@@ -50,11 +48,6 @@ public class Radio implements Volume {
 	@Override // interface Volume
 	public boolean isMuted() {
 		return isMuted;
-	}
-
-	@Override
-	public void silence() {
-		setVolume(SILENT_VOLUME);
 	}
 
 	@Override
