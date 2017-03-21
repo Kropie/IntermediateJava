@@ -9,6 +9,8 @@
 package com.entertainment;
 
 public interface Volume {
+	public static final int SILENT_VOLUME = 0;
+	
 	public void setVolume(int volume);
 
 	public int getVolume();
@@ -18,7 +20,7 @@ public interface Volume {
 	public boolean isMuted();
 
 	public default void silence() {
-		setVolume(0);
+		setVolume(SILENT_VOLUME);
 	}
 
 	public static void silenceAll(Volume... volumes) {
