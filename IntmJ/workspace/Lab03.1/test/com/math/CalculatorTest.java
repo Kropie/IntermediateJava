@@ -17,6 +17,8 @@ public class CalculatorTest {
 	public void testAdd() {
 		Calculator calc = new Calculator();
 		assertEquals(5, calc.add(1, 4)); // expected, actual
+		assertEquals(10, calc.add(1, 9));
+		assertEquals(1000, calc.add(111, 889));
 	}
 	
 	@Test
@@ -33,6 +35,8 @@ public class CalculatorTest {
 		Calculator calc = new Calculator();
 		assertTrue(!calc.isEven(13));
 		assertTrue(calc.isEven(12));
+		assertTrue(!calc.isEven(101));
+		assertTrue(calc.isEven(102));
 		assertTrue(calc.isEven(Integer.MIN_VALUE));
 		assertTrue(!calc.isEven(Integer.MAX_VALUE));
 	}
