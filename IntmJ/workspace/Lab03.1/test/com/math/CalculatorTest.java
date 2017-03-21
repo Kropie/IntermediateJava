@@ -20,16 +20,17 @@ public class CalculatorTest {
 		assertEquals(10, calc.add(1, 9));
 		assertEquals(1000, calc.add(111, 889));
 	}
-	
+
 	@Test
 	public void testDivide() {
 		Calculator calc = new Calculator();
-		assertEquals((long)2, (long)calc.divide(8, 4));
-		assertEquals((long)3, (long)calc.divide(12, 4));
-		// The final parameter is the delta that is acceptable from the expected and actual results.
+		assertEquals((long) 2, (long) calc.divide(8, 4));
+		assertEquals((long) 3, (long) calc.divide(12, 4));
+		// The final parameter is the delta that is acceptable from the expected
+		// and actual results.
 		assertEquals(2.5, calc.divide(5, 2), 0.001);
 	}
-	
+
 	@Test
 	public void testIsEven() {
 		Calculator calc = new Calculator();
