@@ -83,6 +83,7 @@ public class Television implements Comparable<Television> {
 					&& Objects.equals(this.getVolume(), other.getVolume())
 					&& Objects.equals(this.getDisplayType(), other.getDisplayType());
 		}
+		System.out.println("television equals");
 		return result;
 	}
 
@@ -109,6 +110,7 @@ public class Television implements Comparable<Television> {
 	 */
 	@Override
 	public int hashCode() {
+		System.out.println("Television hashcode");
 		return Objects.hash(getBrand(), getVolume(), getCurrentChannel(), getDisplayType());
 	}
 

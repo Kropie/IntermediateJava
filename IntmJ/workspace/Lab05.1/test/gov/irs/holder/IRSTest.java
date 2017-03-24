@@ -27,9 +27,9 @@ public class IRSTest {
   @Test
   public void testClassLoading() {
     // TODO: call IRS.touch() and note the output
-    
+    IRS.touch();
     // TODO: call IRS.getInstance() and note the output
-    
+    IRS.getInstance();
   }
   
   @Test

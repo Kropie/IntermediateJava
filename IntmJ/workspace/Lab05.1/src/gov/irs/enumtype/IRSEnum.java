@@ -12,22 +12,23 @@ import java.util.ArrayList;
 import java.util.Collection;
 import gov.irs.TaxPayer;
 
-public enum IRSEnum {
+enum IRSEnum implements IRS{
   INSTANCE;
   
   // BUSINESS CODE
   private Collection<TaxPayer> payers = new ArrayList<>();
   
+  @Override
   public void collectTaxes() {
     for (TaxPayer payer : payers) {
       payer.payTaxes();
     }
   }
   
+  @Override
   public void register(TaxPayer payer) {
     payers.add(payer);
   }
-  
   
   // not needed – just makes enum look more like regular singleton
   public static IRSEnum getInstance() {

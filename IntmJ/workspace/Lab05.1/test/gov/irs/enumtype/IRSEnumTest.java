@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import com.javatunes.corp.Corporation;
-import gov.irs.holder.IRS;
 
 public class IRSEnumTest {
   
@@ -27,14 +26,14 @@ public class IRSEnumTest {
   @Test
   public void testClassLoading() {
     // TODO: call IRSEnum.touch() and note the output
-    
+    IRSEnum.touch();
     // TODO: call IRSEnum.getInstance() and note the output
-    
+    IRSEnum.getInstance();
   }
   
   @Test
   public void testNormalClientUsage() {
-    IRSEnum irs = IRSEnum.getInstance();
+    IRS irs = IRS.getInstance();
     irs.register(new Corporation("JavaTunes"));
     irs.collectTaxes();
   }
