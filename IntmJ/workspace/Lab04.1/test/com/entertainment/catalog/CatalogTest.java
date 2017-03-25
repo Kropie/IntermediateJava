@@ -54,7 +54,7 @@ public class CatalogTest {
 	public void testRemovingDuplicates() {
 		Collection<Television> catalog = Catalog.getInventory();
 		Set<Television> testCollection = new HashSet<>(catalog);
-		
+
 		int sonyCount = 0;
 		for (Television tv : testCollection) {
 			if(tv.getBrand().equals("RCA")) {

@@ -70,6 +70,7 @@ public class Television implements Comparable<Television> {
 		int retval = 0;
 		retval = this.getBrand().compareTo(arg0.getBrand());
 		retval = (retval == 0) ? Integer.compare(this.getVolume(), arg0.getVolume()) : retval;
+		System.out.println("telivision compareto");
 		return retval;
 	}
 
