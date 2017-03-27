@@ -18,6 +18,7 @@ public class MediaPlayerFactoryTest {
   
   private static final String RADIO_FACTORY_CLASS_NAME = "com.javatunes.media.RadioMediaPlayerFactory";
   private static final String INTERNET_FACTORY_CLASS_NAME = "com.javatunes.media.InternetMediaPlayerFactory";
+  private static final String ANALOG_FACTORY_CLASS_NAME  = "com.javatunes.media.AnalogMediaPlayerFactory";
 
   @Test
   public void testRadioPlayer() {
@@ -37,5 +38,17 @@ public class MediaPlayerFactoryTest {
     assertEquals("[http, https, ftp]", Arrays.toString(player.getSupportedContentTypes()));
     assertEquals("InternetMediaPlayer playing internet media", player.play());
     System.out.println(player.play());
+  }
+  
+  @Test
+  public void testAnalogPlayer() {
+	  System.setProperty("org.media.standard.MediaPlayerFactory", ANALOG_FACTORY_CLASS_NAME);
+	  MediaPlayerFactory factory = MediaPlayerFactory.newInstance(); 
+	  MediaPlayer player = factory.newPlayer();
+	  
+	  assertEquals(AnalogMediaPlayer.class, player.getClass());
+	  assertEquals("[cassette, vhs]", Arrays.toString(player.getSupportedContentTypes()));
+	  assertEquals("AnalogMediaPlayer playing analog media", player.play());
+	  System.out.println(player.play());
   }
 }
