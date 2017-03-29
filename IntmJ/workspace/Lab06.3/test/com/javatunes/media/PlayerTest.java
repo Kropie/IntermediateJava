@@ -16,22 +16,28 @@ import com.javatunes.media.Television;
 
 public class PlayerTest {
 
-  @Test
-  public void testUndecoratedPlayer() {
-    Player p1 = new Television();
-    p1.play();
-    
-    Player p2 = new Radio();
-    p2.play();
-  }
-  
-  /**
-   * Example: Television with sound leveling and noise reduction applied.
-   * Uncomment below after SoundLeveler and NoiseReducer have been written.
-   */
-  @Test
-  public void testSoundLevelerNoiseReducerTelevision() {
-    // Player p = new SoundLeveler(new NoiseReducer(new Television()));
-    // p.play();
-  }
+	@Test
+	public void testUndecoratedPlayer() {
+		Player p1 = new Television();
+		p1.play();
+
+		Player p2 = new Radio();
+		p2.play();
+	}
+
+	/**
+	 * Example: Television with sound leveling and noise reduction applied.
+	 * Uncomment below after SoundLeveler and NoiseReducer have been written.
+	 */
+	@Test
+	public void testSoundLevelerNoiseReducerTelevision() {
+		Player p = new SoundLeveler(new NoiseReducer(new Television()));
+//		p.play();
+	}
+	
+	@Test
+	public void testSoundLevelerEqualizerTelevision() {
+		Player p = new Equalizer(new Equalizer(new NoiseReducer( new NoiseReducer(new Television()))));
+		p.play();
+	}
 }

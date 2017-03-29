@@ -8,17 +8,16 @@
  */
 package com.javatunes.media;
 
-public abstract class PlayerEffect
-implements Player {
-  // the decorated object - protected so subclasses have direct access to it
-  protected Player decoratedPlayer;
-  
-  public PlayerEffect(Player player) {
-    this.decoratedPlayer = player;
-  }
-  
-  // pass-thru to decorated Player
-  public void play() {
-    decoratedPlayer.play();
-  }
+public abstract class PlayerEffect implements Player {
+	// the decorated object - protected so subclasses have direct access to it
+	protected Player decoratedPlayer;
+
+	public PlayerEffect(Player player) {
+		this.decoratedPlayer = player;
+	}
+
+	// pass-thru to decorated Player
+	public void play() {
+		decoratedPlayer.play();
+	}
 }
