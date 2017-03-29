@@ -51,6 +51,10 @@ local.properties
 # Eclipse Core
 .project
 
+# Intellij stuff
+*.iml
+.idea
+
 # External tool builders
 .externalToolBuilders/
 

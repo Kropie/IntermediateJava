@@ -10,6 +10,9 @@ package demo.innerclass.ui;
 
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,7 +34,7 @@ extends JFrame {
     setFrameOptions();
     
     // NOTE: pass references to my privates that the listener needs to do its job
-    loginButton.addActionListener(new LoginAppListener(nameField, passwordField, messageLabel));
+    loginButton.addActionListener(new InnerLoginAppListener());
   }
 
   private void buildUI() {
@@ -51,6 +54,27 @@ extends JFrame {
     pack();
   }
   
+  private class InnerLoginAppListener
+  implements ActionListener {
+    
+    public InnerLoginAppListener() {
+    }
+    
+    /**
+     * The heart of an ActionListener - this gets called when the event is fired.
+     * Need to authenticate the user and display appropriate message on the UI.
+     */
+    public void actionPerformed(ActionEvent evt) {
+      if ("derek".equals(nameField.getText()) && "smalls".equals(passwordField.getText())) {
+        messageLabel.setText("Login successful!");
+      }
+      else {
+        messageLabel.setText("Sorry, try again");
+      }
+      nameField.setText("");
+      passwordField.setText("");
+    }
+  }
   
   public static void main(String[] args) {
     new LoginApp().setVisible(true);
