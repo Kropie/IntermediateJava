@@ -19,16 +19,17 @@ public @interface Fast {
    * Performance boost, expressed as a decimal, ranging from 0.0 (no boost) to 1.0 (100% faster).
    * Required attribute.
    */
-
+    double boost ();
   
   /**
    * Whether or not to log extra information about the performance boost (optional).
    * Includes real-time performance metrics data, in nanoseconds.
    */
+  boolean enableLog() default false;
 
   
   /**
    * Description (optional).
    */
-  
+  String description() default "";
 }

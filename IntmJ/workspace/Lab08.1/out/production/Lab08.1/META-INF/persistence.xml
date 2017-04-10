@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0" 
+ xmlns="http://java.sun.com/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  
+  <persistence-unit name="javatunes" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <properties>
+      <!-- JPA connection properties -->
+      <property name='javax.persistence.jdbc.url' value='jdbc:derby:JavaTunesEmbeddedDB'/>
+      <!-- property name='javax.persistence.jdbc.driver' value='org.apache.derby.jdbc.ClientDriver'/ -->
+      
+      <!-- Database connection properties for Hibernate -->
+      <!-- property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/ -->
+      
+      <!-- Hibernate specific logging configuration - logs to stdout -->
+      <property name="hibernate.show_sql" value="true"/>
+      
+      <!-- Hibernate specific configuration - additional properties -->
+      <!-- Use thread local contextual sessions - NOT USED IN JPA -->
+      <property name="hibernate.current_session_context_class" value="thread"/>
+      <!-- Use internal Hibernate DB connection pool -->
+      <property name="hibernate.connection.pool_size" value="1"/>
+      <!-- Disable the second-level cache -->
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+    </properties>
+  </persistence-unit>
+
+</persistence>

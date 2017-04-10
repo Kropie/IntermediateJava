@@ -9,16 +9,19 @@
 package com.javatunes.thread;
 
 public class RepeatingPrinter
-implements Runnable {
+        implements Runnable {
 
-  public void run() {
-    while (true) {
-      System.out.println("RepeatingPrinter.run");
-      try {
-        Thread.sleep(1000);
-      }
-      catch (InterruptedException e) {
-      }
+    public void run() {
+        while (true) {
+            System.out.println("RepeatingPrinter.run");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+        }
     }
-  }
+
+    public static void main(String[] args) {
+        System.out.println("HELLO");
+    }
 }

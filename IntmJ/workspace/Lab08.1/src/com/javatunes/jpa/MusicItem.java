@@ -18,20 +18,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
+@Table(name="ITEM")
 public class MusicItem
 implements Serializable {
   // PROPERTIES
-  @Id
+  @Column(name = "ITEM_ID")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;  // PK column in ITEM table
+
   private String num;
   private String title;
   private String artist;
+  @Column(name = "RELEASE_DATE")
   private Date releaseDate;
+  @Column(name = "LIST_PRICE")
   private BigDecimal listPrice;
   private BigDecimal price;
   
   // CONSTRUCTORS
-  public MusicItem() { 
+  public MusicItem() {
   }
 
   public MusicItem(String num, String title, String artist, Date releaseDate, BigDecimal listPrice, BigDecimal price) {

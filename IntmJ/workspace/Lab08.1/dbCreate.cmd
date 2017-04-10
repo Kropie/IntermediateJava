@@ -1,1 +1,1 @@
-java -classpath bin;lib\derby.jar;lib\derbytools.jar com.javatunes.db.internal.EmbeddedDerby create
+java -classpath out\production\Lab08.1;lib\derby.jar;lib\derbytools.jar com.javatunes.db.internal.EmbeddedDerby create
