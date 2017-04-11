@@ -11,6 +11,7 @@ package com.javatunes.compare;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -60,7 +61,17 @@ public class StringSortTest {
         // COMPLETED: sort sports by using a method reference
         System.out.println("Sports sort - increasing length - method reference:");
         sports.sort(StringSortTest::compareStrings);
-        System.out.println(sports);
+        System.out.println(sports + "\n");
+    }
+
+    @Test
+    public void testSortingWithStreams() {
+        List namesStreamed = names.stream()
+                .filter(name -> name.contains("k"))
+                .sorted((Comparator.comparingInt(String::length).reversed()))
+                .collect(Collectors.toList());
+
+        System.out.println(namesStreamed);
     }
 
     private static int compareStrings(String s1, String s2) {
