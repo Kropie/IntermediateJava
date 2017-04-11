@@ -17,7 +17,8 @@ import org.junit.Test;
 public class StringSortTest {
 
     private List<String> names = Arrays.asList("Jason", "Martin", "Jack", "Mary", "Jill", "Frederick", "Laurie", "Ed");
-    private List<String> sports = Arrays.asList("football", "baseball", "tennis", "soccer", "squash", "rugby", "racquetball", "golf", "cricket", "basketball");
+    private List<String> sports = Arrays.asList("football", "baseball", "tennis", "soccer", "squash", "rugby",
+            "racquetball", "golf", "cricket", "basketball");
 
     @Test
     public void testSortLambda() {
