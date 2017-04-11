@@ -72,6 +72,13 @@ public class StringSortTest {
                 .collect(Collectors.toList());
 
         System.out.println(namesStreamed);
+
+        namesStreamed = names.stream()
+                .filter(name -> name.contains("k"))
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println(namesStreamed);
     }
 
     private static int compareStrings(String s1, String s2) {
