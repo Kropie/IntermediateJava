@@ -11,9 +11,13 @@ package com.javatunes.catalog;
 import java.util.Collection;
 
 public interface Catalog {
-  public MusicItem findById(Long id);
-  public Collection<MusicItem> findByKeyword(String keyword);
-  public Collection<MusicItem> findByCategory(MusicCategory category);
-  public int size();
-  public Collection<MusicItem> getAll();
+    MusicItem findById(Long id);
+
+    Collection<MusicItem> findByKeyword(String keyword);
+
+    Collection<MusicItem> findByCategory(MusicCategory category);
+
+    int size();
+
+    Collection<MusicItem> getAll();
 }

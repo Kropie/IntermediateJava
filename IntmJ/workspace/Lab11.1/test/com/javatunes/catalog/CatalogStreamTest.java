@@ -38,7 +38,7 @@ public class CatalogStreamTest {
     public void testArtistStartsWithSortPrice() {
         List<MusicItem> items = allMusicItems.stream()
                 .filter(item -> item.getArtist().startsWith("D"))
-                .sorted(Comparator.comparing(item -> item.getPrice()))
+                .sorted(Comparator.comparing(MusicItem::getPrice))
                 .collect(Collectors.toList());
 
         assertEquals(2, items.size());

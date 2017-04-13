@@ -90,7 +90,7 @@ implements Comparable<MusicItem> {
   @Override
 	public boolean equals(Object compare) {
 		boolean result = false;
-		MusicItem other = null;
+		MusicItem other;
 		if (compare instanceof MusicItem) {
 			other = (MusicItem) compare;
 			result = other.getId().equals(this.getId());
