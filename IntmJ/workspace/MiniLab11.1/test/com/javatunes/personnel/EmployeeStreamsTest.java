@@ -11,6 +11,7 @@ package com.javatunes.personnel;
 import static org.junit.Assert.*;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +37,7 @@ public class EmployeeStreamsTest {
     public void testSalaryLessThanSortNaturalOrder() {
         List<Employee> employees = allEmployees.stream()
                 .filter(emp -> emp.getSalary() < 40000.0)
-                .sorted()  // natural order
+                .sorted(Comparator.comparing(Employee::getName))  // natural order
                 .collect(Collectors.toList());
 
         assertEquals(2, employees.size());
